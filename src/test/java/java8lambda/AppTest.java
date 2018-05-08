@@ -1,7 +1,9 @@
-package com.mkyong;
+package java8lambda;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import java8lambda.App;
 
 public class AppTest {
 

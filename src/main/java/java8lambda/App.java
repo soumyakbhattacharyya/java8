@@ -1,4 +1,4 @@
-package com.mkyong;
+package java8lambda;
 
 import java.util.UUID;
 
