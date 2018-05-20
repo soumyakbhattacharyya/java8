@@ -1,4 +1,4 @@
-package java8lambda;
+package part1;
 
 public class Greeter {
 
