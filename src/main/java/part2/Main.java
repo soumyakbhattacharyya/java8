@@ -1,9 +1,11 @@
 package part2;
 
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -15,9 +17,8 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		
-		List<RollingStoneAlbum> list = CSVReader.readCSV();
-		
-		
+		List<RollingStoneAlbum> list = CSVReader.readCSV();	
+		functionExample2(list);
 	
 	}
 	
@@ -50,7 +51,7 @@ public class Main {
 		}
 	}
 	
-	public static void functionExample(List<RollingStoneAlbum> list) {
+	public static void functionExample1(List<RollingStoneAlbum> list) {
 		Function<List<RollingStoneAlbum>, Map<String,Integer>> function = (x) -> {
 			Map<String,Integer> names = new HashMap<>();
 			for (RollingStoneAlbum entry : x) {
@@ -62,6 +63,49 @@ public class Main {
 		
 	}
 	
+	public static void functionExample2(List<RollingStoneAlbum> list) {
+		Function<List<RollingStoneAlbum>, Map<String, Integer>> buildArtistsVsNameCollection = (List<RollingStoneAlbum> x) -> {
+			Map<String, Integer> names = new HashMap<>();
+			for (RollingStoneAlbum entry : x) {
+				if (null == names.get(entry.getArtist())) {
+					names.put(entry.getArtist(), entry.getArtist().length());
+				}
+			}
+			return names;
+		};
+		Function<Map<String, Integer>, Double> findAverageLength = (x) -> {
+			double numArtists = x.keySet().size();
+			double totalLength = 0;
+			for (Entry<String,Integer> entry : x.entrySet()) {
+				totalLength = totalLength + entry.getValue();
+			}
+			return totalLength/numArtists;
+		};
+
+		Double averageLength = findAverageLength.compose(buildArtistsVsNameCollection).apply(list);
+		System.out.println("average length is :"+averageLength);
+
+	}
+	
+	public static void stuff(List<RollingStoneAlbum> list) {
+		Function<RollingStoneAlbum, String> funcEmpToString = (RollingStoneAlbum e) -> {
+			return e.getAlbum();
+		};
+		Function<String, String> initialFunction = (String s) -> s.substring(0, 1);
+		List<String> empNameListInitials = convertEmpListToNamesList(list, funcEmpToString.andThen(initialFunction));
+		empNameListInitials.forEach(str -> {
+			System.out.print(" " + str);
+		});
+	}
+
+	public static List<String> convertEmpListToNamesList(List<RollingStoneAlbum> albumList,
+			Function<RollingStoneAlbum, String> funcEmpToString) {
+		List<String> albumNameList = new ArrayList<String>();
+		for (RollingStoneAlbum emp : albumList) {
+			albumNameList.add(funcEmpToString.apply(emp));
+		}
+		return albumNameList;
+	}
 	
 
 }
