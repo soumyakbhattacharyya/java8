@@ -1,4 +1,4 @@
-package java8lambda.example;
+package common.model;
 
 public class Person {
 

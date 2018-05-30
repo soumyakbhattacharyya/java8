@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 
-import java8lambda.example.Person;
+import common.model.Person;
 
 public class Greeter2 {
 

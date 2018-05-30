@@ -10,8 +10,8 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import part2.model.RollingStoneAlbum;
-import part2.utility.CSVReader;
+import common.model.RollingStoneAlbum;
+import common.utility.CSVReader;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package part2.utility;
+package common.utility;
 
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import org.supercsv.io.CsvBeanReader;
 import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.prefs.CsvPreference;
 
-import part2.model.RollingStoneAlbum;
+import common.model.RollingStoneAlbum;
 
 public class CSVReader {
 

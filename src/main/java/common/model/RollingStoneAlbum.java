@@ -1,4 +1,4 @@
-package part2.model;
+package common.model;
 
 public class RollingStoneAlbum {
 
