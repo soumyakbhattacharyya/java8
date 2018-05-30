@@ -13,7 +13,7 @@ import java.util.function.Predicate;
 import common.model.RollingStoneAlbum;
 import common.utility.CSVReader;
 
-public class Main {
+public class Part2Main {
 
 	public static void main(String[] args) throws Exception {
 		
